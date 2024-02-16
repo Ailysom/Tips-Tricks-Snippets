@@ -23,4 +23,6 @@
   - [Bruteforce](red_teaming.md#bruteforce)
   - [Reverse shell](red_teaming.md#reverse-shell)
   - [SQL Injection](red_teaming.md#sql-injection)
+- [Network](network.md)
+  - [ShadowSocks](network.md#shadowsocks)
 - [Some configuration files, just save and share](configs)
