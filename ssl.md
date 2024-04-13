@@ -21,6 +21,10 @@ Remote
 openssl s_client -showcerts -servername <ip>:<port> -connect <ip>:<port>
 ```
 
+```bash
+openssl s_client -showcerts -servername <ip>:<port> -connect <ip>:<port> | openssl x509 -text
+```
+
 ## Self signed
 
 Create self signed certificate
