@@ -1,4 +1,4 @@
-# CLI (GNU / Linux)
+# GNU/Linux & CLI
 
 ## Archive
 
@@ -54,14 +54,6 @@ Value is summary:
 
 `chmod <Value position> <some_file>` - Change permissons
 
-## Systemd
-
-List all services
-
-```bash
-systemctl --type=service
-```
-
 ## Pacman
 
 Use `man` for more information.
@@ -107,120 +99,50 @@ To remove a package, its dependencies and all the packages that depend on the ta
 pacman -Rsc <package_name>
 ```
 
-## SSH
+## Sed
 
-### Settings for ssh client
-
-#### Auth key generation
+### Find and replace recursively
 
 ```bash
-mkdir .ssh
-cd .ssh
-ssh-keygen -f <key_name>
+find . -type f -exec sed -i 's/<regex find>/<replace>/g' {} +
 ```
 
-`<key_name.pub>` upload to server
+## Kernel modules
 
-#### Auth key config
+[For more information go to Arch Wiki](https://wiki.archlinux.org/title/Kernel_module)
 
-Into `.ssh` create `config` and write:
-
-```conf
-Host <first_server_name_or_ip>
-	IdentityFile ~/.ssh/<first_key_name>
-Host <second_server_name_or_ip>
-	IdentityFile ~/.ssh/<second_key_name>
-```
-
-#### Troubleshooting
-
-If key is broken, remove `~/.ssh/known_hosts`  
-  
-For windows use `C:\Users\username\.ssh` directory.
-
-## GIT
-
-### Global config
+### All installed modiles
 
 ```bash
-git config --global user.email "some@mail.com"
-git config --global user.name "user_name"
+find /lib/modules/$(uname -r) -name *.ko 
 ```
 
-### Clone
-
-First upload repository
+### All loaded
 
 ```bash
-git clone git@github.com:Ailysom/knowledge.git
+lsmod
 ```
 
-You can add path to download after repo-url
-
-### Add changes
+### Info about module
 
 ```bash
-git add .
+modinfo <module>
 ```
 
-Also you can add files separatly
+### Load/Unload module
+
+Load
 
 ```bash
-git add <path_to_file>
+modeprobe <module>
 ```
 
-### Commit changes
-
-Calc diff and write
+Unload
 
 ```bash
-git commit changes -m <you_message>
+modeprobe -r module
 ```
 
-### Upload commit to server
+Path for autoload config: `/etc/modules-load.d/`
 
-```bash
-git push
-```
-
-If you create new branch, use:
-
-```bash
-git push --set-upstream origin <branch_name>
-```
-
-Also
-
-```bash
-git push <local_branch> <remote_branche>
-```
-
-### Download commits from server
-
-```bash
-git pull
-```
-
-### Change branch
-
-```bash
-git switch <branch_name>
-```
-
-### Create branch
-
-```bash
-git branch <branch_name>
-```
-
-Create and switch to new branch
-
-```bash
-git checkout -b <branch_name>
-```
-
-### Check current branch and show other
-
-```bash
-git branch
-```
+Path for module config: `/etc/modprobe.d/`. Config format: `options <module> <param name>=<value>`

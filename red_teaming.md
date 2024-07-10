@@ -40,6 +40,10 @@ sudo LD_PRELOAD=/<path_to_exploit>/shell.so <vulnerable_program>
 gobuster vhost -w <path_to_dict_file> -u http://<url>
 ```
 
+```bash
+wfuzz -w <path_to_dict_file> -u http://<url>/ -H 'Host: FUZZ.<url>' -t 50 --hc 302
+```
+
 ### Dictionaries
 
 ```bash
