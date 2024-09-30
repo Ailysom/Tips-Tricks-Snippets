@@ -123,3 +123,12 @@ Parse `.pfx` certificate to `.crt` and `.rsa`
 openssl pkcs12 -in for_nginx.pfx -clcerts -nokeys -out for_nginx.crt
 openssl pkcs12 -in for_nginx.pfx -nocerts -nodes -out for_nginx.rsa
 ```
+
+## Add CA to host
+
+### Debian
+
+```bash
+cp ca.crt /usr/local/share/ca-certificates/
+update-ca-certificates
+```
