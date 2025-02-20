@@ -64,3 +64,24 @@ pub async fn index(data: actix_web::web::Data<PreRendor>)
 	actix_web::HttpResponse::Ok().body(data.index.clone())
 } 
 ```
+
+## Basics
+
+### Install
+
+```bash
+
+curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
+```
+
+### Variables
+
+```rust
+let a = 5; // Create new variable. By default vars - immutable.
+a = 6; // Error
+
+let mut b = 7; // Create new mutable var.
+b = 8; // Ok
+
+const THREE_HOURS_IN_SECONDS: u32 = 60 * 60 * 3; // Create new constant. Calculate in build time!
+```
